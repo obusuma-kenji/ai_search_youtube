@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>検索の終焉と、AIに選ばれるブランドの条件｜AI検索時代のYouTube戦略</title>
+<meta name="description" content="AI検索時代のYouTubeブランド可視化戦略。検索トップからAI推薦（GEO）へのパラダイムシフトと戦略的プレイブック。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0a0e1a;--bg-card:rgba(18,24,48,0.85);
+--red:#e63946;--cyan:#00d4ff;--gold:#ffd700;
+--t1:#f0f0f5;--t2:#a0a8c4;
+--glass:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Noto Sans JP','Outfit',sans-serif;background:var(--bg);color:var(--t1);line-height:1.8;overflow-x:hidden}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0e1a 0%,#1a1040 40%,#0d1a2e 100%)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:url('hero.png') center/cover no-repeat;opacity:.18}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:2rem;max-width:960px}
+.hero-tag{display:inline-block;padding:.4rem 1.2rem;border:1px solid var(--cyan);color:var(--cyan);border-radius:50px;font-size:.8rem;letter-spacing:.15em;margin-bottom:2rem;text-transform:uppercase;animation:fu .8s ease}
+.hero h1{font-family:'Outfit','Noto Sans JP';font-size:clamp(2rem,5vw,3.8rem);font-weight:900;line-height:1.25;margin-bottom:1rem;background:linear-gradient(135deg,#fff 30%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:fu 1s ease .2s both}
+.hero p{font-size:clamp(.95rem,2vw,1.2rem);color:var(--t2);max-width:700px;margin:0 auto 2.5rem;animation:fu 1s ease .4s both}
+.stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;animation:fu 1s ease .6s both}
+.stat{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;backdrop-filter:blur(10px);min-width:160px}
+.stat .n{font-family:'Outfit';font-size:2.5rem;font-weight:800}
+.stat .l{font-size:.78rem;color:var(--t2);margin-top:.3rem}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;color:var(--t2);font-size:.8rem;text-decoration:none}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+@keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+section{padding:5rem 1.5rem;max-width:1200px;margin:0 auto}
+.stag{display:inline-block;padding:.3rem 1rem;border:1px solid var(--cyan);color:var(--cyan);border-radius:50px;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem}
+.stitle{font-family:'Outfit','Noto Sans JP';font-size:clamp(1.6rem,4vw,2.8rem);font-weight:800;margin-bottom:.8rem;line-height:1.3}
+.sdesc{color:var(--t2);font-size:1rem;max-width:750px;margin-bottom:3rem}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:2rem;backdrop-filter:blur(8px);transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(0,212,255,.2)}
+.card h3{font-size:1.15rem;font-weight:700;margin-bottom:.6rem}
+.card p{color:var(--t2);font-size:.9rem;line-height:1.7}
+.icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem}
+.icon-r{background:rgba(230,57,70,.15);color:var(--red)}.icon-c{background:rgba(0,212,255,.12);color:var(--cyan)}.icon-g{background:rgba(255,215,0,.12);color:var(--gold)}
+.g2{display:grid;grid-template-columns:1fr;gap:1.5rem}.g3{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}}
+.ctbl{width:100%;border-collapse:separate;border-spacing:0;border-radius:16px;overflow:hidden;margin:2rem 0}
+.ctbl th,.ctbl td{padding:1rem 1.2rem;text-align:left;font-size:.9rem}
+.ctbl thead th{background:rgba(0,212,255,.1);color:var(--cyan);font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.ctbl tbody tr{border-bottom:1px solid var(--border)}.ctbl tbody tr:nth-child(odd){background:var(--glass)}
+.ctbl tbody td:first-child{font-weight:600;color:var(--t1)}.ctbl tbody td:last-child{color:var(--cyan)}
+.img-wrap{border-radius:20px;overflow:hidden;border:1px solid var(--border);margin:2rem 0}.img-wrap img{width:100%;height:auto;display:block}
+.mcard{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.mcard video,.mcard audio{width:100%}
+.minfo{padding:1.5rem 2rem}.minfo h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}.minfo p{color:var(--t2);font-size:.85rem}
+.pdf-v{width:100%;height:80vh;border-radius:20px;overflow:hidden;border:1px solid var(--border)}
+.chwrap{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:2rem}
+.chbox{position:relative;width:100%;max-width:500px;margin:0 auto;height:280px}
+.pstep{display:flex;gap:1rem;margin-bottom:1.5rem;align-items:flex-start}
+.pnum{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--red),#ff6b6b);display:flex;align-items:center;justify-content:center;font-family:'Outfit';font-weight:800;font-size:.8rem;color:#fff}
+.pnum-g{background:linear-gradient(135deg,var(--gold),#ffaa00)}
+.tbar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.tbtn{padding:.6rem 1.4rem;border-radius:50px;border:1px solid var(--border);background:transparent;color:var(--t2);font-size:.85rem;cursor:pointer;transition:all .3s;font-family:inherit}
+.tbtn.on{background:var(--cyan);color:var(--bg);border-color:var(--cyan);font-weight:600}
+.tpan{display:none}.tpan.on{display:block}
+.hint{margin-top:1rem;padding:1rem;border-radius:12px;font-size:.85rem}
+.hint-c{background:rgba(0,212,255,.06);border-left:3px solid var(--cyan);color:var(--cyan)}
+.hint-r{background:rgba(230,57,70,.06);border-left:3px solid var(--red);color:var(--red)}
+.hint-g{background:rgba(255,215,0,.06);border-left:3px solid var(--gold);color:var(--gold)}
+.cklist label{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;border-radius:12px;cursor:pointer;transition:background .2s;font-size:.9rem}
+.cklist label:hover{background:var(--glass)}
+.cklist input[type=checkbox]{width:20px;height:20px;accent-color:var(--cyan)}
+.pbar-o{background:rgba(255,255,255,.06);border-radius:20px;height:10px;overflow:hidden;margin:1rem 0}
+.pbar-i{height:100%;background:linear-gradient(90deg,var(--cyan),var(--gold));border-radius:20px;transition:width .5s ease;width:0%}
+.gov{padding:.8rem 1rem;background:var(--glass);border-radius:12px;margin-bottom:.6rem}
+.glow{height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);margin:4rem auto;max-width:600px}
+.cta{text-align:center;padding:6rem 2rem;position:relative}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,212,255,.08) 0%,transparent 70%)}
+.step-box{padding:.8rem 1.5rem;background:var(--glass);border:1px solid var(--border);border-radius:12px;font-size:.9rem;font-weight:600}
+footer{text-align:center;padding:3rem 1rem;color:var(--t2);font-size:.8rem;border-top:1px solid var(--border)}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}.rv.vis{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<div class="hero-bg"></div>
+<div class="hero-inner">
+<div class="hero-tag">2026 YouTube × AI Search Strategy</div>
+<h1>検索の終焉と、<br>AIに選ばれるブランドの条件</h1>
+<p>YouTubeを最強の検索資産へと変革する<br>パラダイムシフトと戦略的プレイブック</p>
+<div class="stats">
+<div class="stat"><div class="n" style="color:var(--red)">74<span style="font-size:1.5rem">%</span></div><div class="l">AIの回答で購買意欲が左右</div></div>
+<div class="stat"><div class="n" style="color:var(--cyan)">414<span style="font-size:1.5rem">%</span></div><div class="l">AI OverviewsでのYouTube引用増加率</div></div>
+<div class="stat"><div class="n" style="color:var(--gold)">10<span style="font-size:1.5rem">x</span></div><div class="l">Rootly社のSoV向上倍率</div></div>
+</div>
+</div>
+<a href="#s1" class="scroll-hint">&#9660; Scroll to explore</a>
+</div>
+
+<section id="s1" class="rv">
+<div class="stag">Section 01</div>
+<h2 class="stitle">検索から「質問」へのパラダイムシフト</h2>
+<p class="sdesc">ユーザーの情報探索は「Search &amp; Click」から「Ask &amp; Decide」へ。AIコンシェルジュに推薦されないブランドは、市場から"消える"時代が始まりました。</p>
+<div class="img-wrap rv"><img src="youtube_AI.png" alt="AI検索時代のYouTubeブランド可視化戦略 インフォグラフィック" loading="lazy"></div>
+<div class="g2" style="margin-top:2.5rem">
+<div class="chwrap rv"><h3 style="font-size:1rem;font-weight:600;margin-bottom:1.5rem;text-align:center">AIユーザーの購買意欲への影響度</h3><div class="chbox"><canvas id="ch1"></canvas></div></div>
+<div class="card rv">
+<h3 style="font-size:1.2rem;margin-bottom:1.2rem">🔄 SEO vs AIO/GEO 比較</h3>
+<table class="ctbl"><thead><tr><th>項目</th><th>従来のSEO</th><th>AI時代のGEO</th></tr></thead>
+<tbody>
+<tr><td>主目的</td><td>検索順位の最大化</td><td>AI回答への引用獲得</td></tr>
+<tr><td>焦点</td><td>キーワード一致・被リンク</td><td>検索意図の満足度</td></tr>
+<tr><td>技術</td><td>ドメイン強度・メタデータ</td><td>NLO・構造化データ</td></tr>
+<tr><td>KPI</td><td>検索順位・PV</td><td>SoV・ブランド引用率</td></tr>
+<tr><td>リスク</td><td>順位の下落</td><td>不可視化（存在の抹消）</td></tr>
+</tbody></table>
+</div>
+</div>
+</section>
+
+<div class="glow"></div>
+
+<section id="s2" class="rv">
+<div class="stag">Section 02</div>
+<h2 class="stitle">YouTubeアルゴリズム 2026年の新基準</h2>
+<p class="sdesc">「視聴時間」から「満足度」へ。ショートと長尺が完全分離され、AIは動画を「見る」のではなく文字を「読んで」いる。</p>
+<div class="tbar">
+<button class="tbtn on" onclick="tab('shorts',this)">📱 ショート動画</button>
+<button class="tbtn" onclick="tab('long',this)">📺 長尺動画</button>
+<button class="tbtn" onclick="tab('airead',this)">🤖 AIの動画読解</button>
+</div>
+<div id="p-shorts" class="tpan on"><div class="card"><div class="icon icon-c">📱</div><h3>ショート動画のアルゴリズム基準</h3><p>ターゲットはモバイル視聴。最初の0.5秒のフック、高評価数、スワイプ率が重要KPI。再生回数と高評価の相関係数は0.83と非常に高く、瞬間的なインパクトが勝負を分けます。</p><div class="hint hint-c">💡 Veo 3による撮影不要のショート動画生成、AIリップシンクによる多言語展開で制作効率を劇的に向上</div></div></div>
+<div id="p-long" class="tpan"><div class="card"><div class="icon icon-r">📺</div><h3>長尺動画のアルゴリズム基準</h3><p>ターゲットはリビングのテレビ視聴。検索意図の満足度スコアとセッション深度が重要KPI。無駄な引き延ばしを排除し、価値密度の高い結論を提示する戦略が求められます。</p><div class="hint hint-r">💡 外れ値分析による逆算 — 競合の3〜10倍再生の動画からトピックを特定</div></div></div>
+<div id="p-airead" class="tpan"><div class="card"><div class="icon icon-g">🧠</div><h3>LLMによる「動画読解」のメカニズム</h3><p>AIは動画を「見ている」のではなく、トランスクリプト（字幕テキスト）を「読んでいる」。Google AI OverviewsにおけるYouTube動画の引用増加率は414%。映像でしか語られていないブランドはAIにとって存在しません。</p><div class="hint hint-g">💡 戦略的スクリプト設計：ブランド名や差別化ポイントを「言葉」として発話。FAQ形式の一問一答構造が引用率を高める</div></div></div>
+</section>
+
+<div class="glow"></div>
+
+<section id="s3" class="rv">
+<div class="stag">Section 03</div>
+<h2 class="stitle">AIO戦略と事例証明</h2>
+<p class="sdesc">Rootly社はSEOで勝っていたがAIに推薦されなかった。自己PRを捨て、第三者レビューと技術ドキュメントを強化した結果、SoVが3%→30%に急増。</p>
+<div class="g2">
+<div class="chwrap rv"><h3 style="font-size:1rem;font-weight:600;margin-bottom:1.5rem;text-align:center">Rootly社のShare of Voice推移</h3><div class="chbox"><canvas id="ch2"></canvas></div></div>
+<div class="card rv">
+<h3 style="margin-bottom:1.2rem">🛡️ ハルシネーション・ガバナンス</h3>
+<p style="margin-bottom:1rem">AIの「嘘」からブランドを守る — 静的な公開から、AIへ正しい事実を供給する能動的な情報デリバリーへ。</p>
+<div class="gov" style="border-left:3px solid var(--cyan)"><strong style="font-size:.85rem">FAQ Page</strong><p style="font-size:.8rem;color:var(--t2);margin-top:.3rem">質問と回答のペアを明示し、AIの推測を排除</p></div>
+<div class="gov" style="border-left:3px solid var(--gold)"><strong style="font-size:.85rem">Review / 第三者評価</strong><p style="font-size:.8rem;color:var(--t2);margin-top:.3rem">客観的証拠の提示で信頼性を確保</p></div>
+<div class="gov" style="border-left:3px solid var(--red)"><strong style="font-size:.85rem">Product Data</strong><p style="font-size:.8rem;color:var(--t2);margin-top:.3rem">製品仕様・価格の正確な供給</p></div>
+</div>
+</div>
+</section>
+
+<div class="glow"></div>
+
+<section id="s4" class="rv">
+<div class="stag">Section 04</div>
+<h2 class="stitle">3つのPlaybook：実行ロードマップ</h2>
+<p class="sdesc">AIコンシェルジュに選ばれるための具体的アクションプラン。</p>
+<div class="g3">
+<div class="card rv"><div class="icon icon-r">🎯</div><h3>Playbook 1<br><span style="font-size:.85rem;color:var(--t2)">外れ値抽出</span></h3><div style="margin-top:1rem;font-size:.85rem;color:var(--t2)">
+<div class="pstep"><div class="pnum">1</div><p>競合チャンネルを5〜10個選定</p></div>
+<div class="pstep"><div class="pnum">2</div><p>直近50本の平均再生回数を算出</p></div>
+<div class="pstep"><div class="pnum">3</div><p>平均の3〜10倍の「外れ値」動画を特定</p></div>
+<div class="pstep"><div class="pnum">4</div><p>フック、尺、フォーマットの共通パターンを解読</p></div>
+<div class="pstep"><div class="pnum">5</div><p>発見したパターンに自社の独自視点を掛け合わせる</p></div>
+</div></div>
+<div class="card rv"><div class="icon icon-c">🤝</div><h3>Playbook 2<br><span style="font-size:.85rem;color:var(--t2)">AI×人間の共同編集</span></h3><div style="margin-top:1rem">
+<div style="padding:.8rem;background:rgba(0,212,255,.06);border-radius:12px;margin-bottom:.6rem"><strong style="font-size:.8rem;color:var(--cyan)">AIの役割：素材と効率</strong><p style="font-size:.8rem;color:var(--t2);margin-top:.3rem">Veo 3でショート動画生成、AIリップシンク、BGM自動提案</p></div>
+<div style="padding:.8rem;background:rgba(255,215,0,.06);border-radius:12px"><strong style="font-size:.8rem;color:var(--gold)">人間の役割：感情と満足度</strong><p style="font-size:.8rem;color:var(--t2);margin-top:.3rem">0.5秒の視覚フック、情緒的な「間」、ABテストによるクリック率最大化</p></div>
+</div></div>
+<div class="card rv"><div class="icon icon-g">📊</div><h3>Playbook 3<br><span style="font-size:.85rem;color:var(--t2)">SoVの掌握と競争的置換</span></h3><div style="margin-top:1rem;font-size:.85rem;color:var(--t2)">
+<div class="pstep"><div class="pnum pnum-g">1</div><p>主要プロンプトでの自社と競合のSoV差を特定</p></div>
+<div class="pstep"><div class="pnum pnum-g">2</div><p>AIが参照しているソース（動画スクリプト等）を特定</p></div>
+<div class="pstep"><div class="pnum pnum-g">3</div><p>構造化データとFAQを実装し、推奨枠を奪取</p></div>
+</div></div>
+</div>
+</section>
+
+<div class="glow"></div>
+
+<section id="s5" class="rv">
+<div class="stag">Section 05</div>
+<h2 class="stitle">実行チェックリスト</h2>
+<p class="sdesc">今日から始められるアクション。進捗をチェックしながら、AI検索時代への対応を一歩ずつ進めましょう。</p>
+<div class="card" style="max-width:700px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem"><span style="font-size:.85rem;font-weight:600">進捗率</span><span id="ptxt" style="font-size:.85rem;font-weight:700;color:var(--cyan)">0%</span></div>
+<div class="pbar-o"><div class="pbar-i" id="pbar"></div></div>
+<div class="cklist" style="margin-top:1.5rem">
+<label><input type="checkbox" class="ck" onchange="prog()"> 自社の主要キーワードでAI検索（ChatGPT/Perplexity等）に自社が引用されるか確認</label>
+<label><input type="checkbox" class="ck" onchange="prog()"> 競合チャンネル5〜10個をリストアップし外れ値動画を分析</label>
+<label><input type="checkbox" class="ck" onchange="prog()"> YouTube動画スクリプトにブランド名・差別化ポイントを「発話」として組み込み</label>
+<label><input type="checkbox" class="ck" onchange="prog()"> FAQ形式の一問一答構造で動画コンテンツを再構成</label>
+<label><input type="checkbox" class="ck" onchange="prog()"> 構造化データ（Schema.org）をサイトに実装</label>
+<label><input type="checkbox" class="ck" onchange="prog()"> 第三者レビュー・技術ドキュメントの充実化</label>
+<label><input type="checkbox" class="ck" onchange="prog()"> ハルシネーション監視体制の構築（月次でAI回答をモニタリング）</label>
+<label><input type="checkbox" class="ck" onchange="prog()"> SoV（Share of Voice）の定期測定を開始</label>
+</div>
+</div>
+</section>
+
+<div class="glow"></div>
+
+<section id="s6" class="rv">
+<div class="stag">Section 06</div>
+<h2 class="stitle">関連メディア＆リソース</h2>
+<p class="sdesc">動画解説、音声コンテンツ、詳細レポートをこちらからご覧いただけます。</p>
+<div class="g2" style="margin-bottom:2rem">
+<div class="mcard rv">
+<video controls preload="metadata" poster="hero.png"><source src="youtube_brand_strategy_small.mp4" type="video/mp4"></video>
+<div class="minfo"><h3>🎬 AI検索時代のYouTubeブランド戦略</h3><p>パラダイムシフトの全体像を動画で解説</p></div>
+</div>
+<div class="mcard rv">
+<div style="padding:2rem;display:flex;align-items:center;justify-content:center;min-height:200px;background:linear-gradient(135deg,rgba(230,57,70,.1),rgba(0,212,255,.1))"><div style="text-align:center"><div style="font-size:3rem;margin-bottom:1rem">🎧</div><p style="font-size:.9rem;color:var(--t2);margin-bottom:1rem">AI検索動画スクリプト 音声版</p></div></div>
+<div style="padding:0 2rem 1.5rem"><audio controls preload="metadata" style="width:100%"><source src="ai_search_video_script_small.m4a" type="audio/mp4"></audio></div>
+<div class="minfo"><h3>🎙️ 音声で学ぶAI検索戦略</h3><p>移動中にも聴けるオーディオコンテンツ</p></div>
+</div>
+</div>
+<div class="rv">
+<h3 style="font-size:1.1rem;font-weight:600;margin-bottom:1rem">📄 詳細レポート：Winning AI Search</h3>
+<iframe class="pdf-v" src="Winning_AI_Search.pdf"></iframe>
+</div>
+</section>
+
+<div class="glow"></div>
+
+<section class="cta rv" style="position:relative">
+<div style="position:relative;z-index:1">
+<h2 class="stitle" style="margin-bottom:1rem">AIという新しいコンシェルジュに<br>選ばれるために</h2>
+<p style="color:var(--t2);max-width:600px;margin:0 auto 2.5rem;font-size:1rem">2026年、私たちが向き合うべき顧客は人間だけではありません。情報の門番となったAIに自社を正しく認識させ、推奨させること。ブランドを真に信頼されるデジタル資産へとアップデートする時が来ました。</p>
+<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+<div style="text-align:center"><div style="font-size:.75rem;color:var(--t2);margin-bottom:.5rem">STEP 1</div><div class="step-box">SoVを徹底診断</div></div>
+<div style="display:flex;align-items:center;color:var(--cyan)">→</div>
+<div style="text-align:center"><div style="font-size:.75rem;color:var(--t2);margin-bottom:.5rem">STEP 2</div><div class="step-box">テキスト資産を構築</div></div>
+<div style="display:flex;align-items:center;color:var(--cyan)">→</div>
+<div style="text-align:center"><div style="font-size:.75rem;color:var(--t2);margin-bottom:.5rem">STEP 3</div><div class="step-box">能動的情報デリバリー開始</div></div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2026 kenjispark AI士業ラボ — AI検索時代のYouTubeブランド可視化戦略</p>
+<p style="margin-top:.5rem;font-size:.7rem">Powered by NotebookLM Research</p>
+</footer>
+
+<script>
+function initCharts(){
+var a=document.getElementById('ch1');
+if(a)new Chart(a,{type:'doughnut',data:{labels:['AIに影響される (74%)','その他 (26%)'],datasets:[{data:[74,26],backgroundColor:['#e63946','rgba(255,255,255,0.08)'],borderWidth:0,hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'75%',plugins:{legend:{position:'bottom',labels:{color:'#a0a8c4',font:{size:12}}},tooltip:{callbacks:{label:function(c){return c.label}}}}}});
+var b=document.getElementById('ch2');
+if(b)new Chart(b,{type:'bar',data:{labels:['Before (SEO中心)','After (AIO/GEO最適化)'],datasets:[{label:'SoV %',data:[3,30],backgroundColor:['rgba(255,255,255,0.1)','#00d4ff'],borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:true,max:40,ticks:{callback:function(v){return v+'%'},color:'#a0a8c4'},grid:{color:'rgba(255,255,255,0.04)'}},x:{ticks:{color:'#a0a8c4'},grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+'%'}}}}}});
+}
+function tab(id,btn){document.querySelectorAll('.tpan').forEach(function(p){p.classList.remove('on')});document.querySelectorAll('.tbtn').forEach(function(b){b.classList.remove('on')});document.getElementById('p-'+id).classList.add('on');btn.classList.add('on')}
+function prog(){var c=document.querySelectorAll('.ck');var n=document.querySelectorAll('.ck:checked').length;var p=Math.round((n/c.length)*100);document.getElementById('pbar').style.width=p+'%';document.getElementById('ptxt').innerText=p+'%'}
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
+window.addEventListener('DOMContentLoaded',initCharts);
+</script>
+</body>
+</html>
