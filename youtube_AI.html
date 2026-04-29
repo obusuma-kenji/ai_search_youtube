@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年デジタルマーケティング戦略：AI検索時代のYouTube運用</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    max-height: 400px;
+    overflow: hidden;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
+    }
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.nav-btn.active {
+    background-color: #fce7f3;
+    color: #e11d48;
+    font-weight: 600;
+    border-right: 4px solid #e11d48;
+}
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans leading-relaxed selection:bg-rose-200 selection:text-rose-900">
+
+<!-- Chosen Palette: Warm Neutrals (Stone) with Rose (YouTube Red inspired) and Sky Blue (AI/Tech inspired) accents -->
+<!-- Application Structure Plan: The SPA uses a dashboard layout with a persistent sidebar (or top nav on mobile) for seamless navigation between 4 thematic sections: 1. Paradigm Shift (Context), 2. YouTube Algorithm 2026 (Rules), 3. AIO Strategy & Case Study (Evidence), 4. Execution Roadmap (Action). This structure was chosen to guide the user logically from understanding the new problem (AI search) to learning the platform rules, seeing proof of concept, and finally taking actionable steps, ensuring high usability and synthesis of the complex source reports. -->
+<!-- Visualization & Content Choices: 
+1. Paradigm Shift -> Goal: Inform -> Doughnut Chart (Chart.js) showing 74% AI influence on purchasing -> Justification: Highlights the urgency of the AIO shift without SVGs.
+2. YouTube Algorithm -> Goal: Compare/Inform -> Interactive Toggle between Shorts/Long-form rules -> Justification: Allows user exploration of decoupled algorithms clearly.
+3. AIO Strategy -> Goal: Compare/Evidence -> Bar Chart (Chart.js) showing Rootly's 3% to 30% SoV increase -> Justification: Provides quantitative proof of the strategy's success. 
+4. Execution Roadmap -> Goal: Organize/Action -> Interactive Checklist with Progress Bar (HTML/JS) -> Justification: Transforms abstract recommendations into an interactive, task-oriented format.
+CONFIRMING NO SVG/Mermaid used. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<div class="flex flex-col md:flex-row min-h-screen">
+    <nav class="w-full md:w-64 bg-white shadow-lg z-10 flex flex-col fixed md:sticky top-0 h-auto md:h-screen">
+        <div class="p-6 bg-rose-600 text-white shadow-md">
+            <h1 class="text-xl font-bold tracking-tight">🔍 2026 AIO Strategy</h1>
+            <p class="text-xs mt-2 opacity-90">AI検索時代のYouTube運用とブランド可視化</p>
+        </div>
+        <div class="flex flex-row md:flex-col overflow-x-auto md:overflow-visible flex-grow p-2 md:p-4 gap-2">
+            <button onclick="navigate('paradigm')" id="btn-paradigm" class="nav-btn active flex items-center gap-3 p-3 text-sm md:text-base text-left rounded-lg transition-colors text-stone-600 hover:bg-stone-100 whitespace-nowrap">
+                <span class="text-xl">🌐</span> パラダイムシフト
+            </button>
+            <button onclick="navigate('algorithm')" id="btn-algorithm" class="nav-btn flex items-center gap-3 p-3 text-sm md:text-base text-left rounded-lg transition-colors text-stone-600 hover:bg-stone-100 whitespace-nowrap">
+                <span class="text-xl">🤖</span> アルゴリズム2026
+            </button>
+            <button onclick="navigate('strategy')" id="btn-strategy" class="nav-btn flex items-center gap-3 p-3 text-sm md:text-base text-left rounded-lg transition-colors text-stone-600 hover:bg-stone-100 whitespace-nowrap">
+                <span class="text-xl">📈</span> AIO戦略と事例
+            </button>
+            <button onclick="navigate('roadmap')" id="btn-roadmap" class="nav-btn flex items-center gap-3 p-3 text-sm md:text-base text-left rounded-lg transition-colors text-stone-600 hover:bg-stone-100 whitespace-nowrap">
+                <span class="text-xl">✅</span> 実行ロードマップ
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-6 md:p-12 mt-32 md:mt-0 overflow-y-auto w-full max-w-6xl mx-auto">
+        
+        <section id="sec-paradigm" class="fade-in block">
+            <header class="mb-10 border-b border-stone-200 pb-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">検索から「質問」へのパラダイムシフト</h2>
+                <p class="text-lg text-stone-600">このセクションでは、ユーザーの情報探索行動が従来の「Search and Click」から「Ask and Decide」へどのように変化したかを解説します。AI検索が購買行動に与える影響を理解し、ブランドの「不可視化リスク」という新たな課題を認識することが目的です。</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100">
+                    <h3 class="text-xl font-bold text-stone-800 mb-4 flex items-center gap-2">⚠️ 不可視化リスクの到来</h3>
+                    <p class="text-stone-600 mb-6">AI検索には「2ページ目」が存在しません。AIの回答に含まれないブランドは、ユーザーの選択肢から事実上抹消されます。AIコンシェルジュに推薦されるかどうかがビジネスの存続を左右します。</p>
+                    
+                    <div class="bg-rose-50 rounded-xl p-6 border border-rose-100">
+                        <div class="chart-container">
+                            <canvas id="influenceChart"></canvas>
+                        </div>
+                        <p class="text-sm text-center text-rose-800 mt-4 font-semibold">AIの回答がユーザーの購買意欲を左右する割合</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-6">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 h-full">
+                        <h3 class="text-xl font-bold text-stone-800 mb-6 flex items-center gap-2">🔄 モデルの劇的な変化</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="p-5 bg-stone-50 rounded-xl border-l-4 border-stone-400">
+                                <h4 class="font-bold text-stone-800 mb-2">旧：SEO（看板モデル）</h4>
+                                <ul class="text-sm text-stone-600 space-y-2">
+                                    <li>▪️ <strong>行動:</strong> 複数のリンクから自分で比較・選択 (Search & Click)</li>
+                                    <li>▪️ <strong>目的:</strong> 検索結果の順位最大化</li>
+                                    <li>▪️ <strong>指標:</strong> PV、検索順位</li>
+                                    <li>▪️ <strong>リスク:</strong> 順位の下落による露出減少</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="p-5 bg-sky-50 rounded-xl border-l-4 border-sky-500 shadow-sm">
+                                <h4 class="font-bold text-sky-900 mb-2">新：AIO/GEO（コンシェルジュモデル）</h4>
+                                <ul class="text-sm text-sky-800 space-y-2">
+                                    <li>▪️ <strong>行動:</strong> AIの要約に基づき意思決定 (Ask & Decide)</li>
+                                    <li>▪️ <strong>目的:</strong> AI回答への引用・推奨の獲得</li>
+                                    <li>▪️ <strong>指標:</strong> Share of Voice (SoV)、ブランド引用率</li>
+                                    <li>▪️ <strong>リスク:</strong> 2ページ目の不在による市場からの消失</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-algorithm" class="fade-in hidden">
+            <header class="mb-10 border-b border-stone-200 pb-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">YouTubeアルゴリズム 2026年の主要変革</h2>
+                <p class="text-lg text-stone-600">このセクションでは、YouTube内部のアルゴリズムがどのように進化しているかを探ります。「視聴時間」から「満足度」への転換、動画フォーマットごとの戦略の分離、そしてAIによる動画読解のメカニズムを理解し、コンテンツ制作の基礎を再構築します。</p>
+            </header>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 mb-8">
+                <h3 class="text-2xl font-bold text-rose-600 mb-4">1. 視聴者満足度（Satisfaction Score）の最重視</h3>
+                <p class="text-stone-700 mb-4">かつての「長く見せれば勝ち」という時代は終わりました。現在のアルゴリズムは、高評価、共有、アンケート結果、リピート視聴を基にした「満足度スコア」を最重要指標としています。</p>
+                <div class="flex items-center gap-4 bg-rose-50 p-4 rounded-lg">
+                    <span class="text-3xl">💡</span>
+                    <p class="text-sm text-rose-900 font-medium">価値の低い「AIスロップ（低品質なAI生成物）」は排除されます。短くても「見て良かった」と思わせる価値密度の高い動画が優遇されます。</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 mb-8">
+                <h3 class="text-2xl font-bold text-sky-600 mb-6">2. フォーマットの完全デカップリング（分離）</h3>
+                <p class="text-stone-700 mb-6">2025年後半、YouTubeはショート動画と長尺動画のアルゴリズムを完全に分離しました。両者は全く異なる評価基準を持っています。</p>
+                
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <button onclick="toggleAlgo('shorts')" id="btn-shorts" class="px-6 py-2 rounded-full bg-sky-600 text-white font-bold transition-all focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2">📱 ショート動画</button>
+                    <button onclick="toggleAlgo('long')" id="btn-long" class="px-6 py-2 rounded-full bg-stone-200 text-stone-600 font-bold transition-all hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2">📺 長尺動画</button>
+                </div>
+
+                <div id="content-shorts" class="p-6 bg-sky-50 rounded-xl border border-sky-100">
+                    <h4 class="font-bold text-lg text-sky-900 mb-3">ショート動画のアルゴリズム基準</h4>
+                    <ul class="list-disc list-inside text-sky-800 space-y-2">
+                        <li><strong>スワイプ率:</strong> 最初の0.5秒の強烈なフックが命運を分ける</li>
+                        <li><strong>ループ率:</strong> 何度も見返したくなる構成</li>
+                        <li><strong>アクション:</strong> 再生回数と「高評価（いいね）」に強い相関関係（0.83）</li>
+                        <li><strong>規模:</strong> 1日2,000億再生を超える巨大市場向けの最適化</li>
+                    </ul>
+                </div>
+
+                <div id="content-long" class="p-6 bg-stone-100 rounded-xl border border-stone-200 hidden">
+                    <h4 class="font-bold text-lg text-stone-800 mb-3">長尺動画のアルゴリズム基準</h4>
+                    <ul class="list-disc list-inside text-stone-700 space-y-2">
+                        <li><strong>視聴環境:</strong> 「YouTube on TV（テレビ視聴）」の拡大に対応</li>
+                        <li><strong>セッション継続率:</strong> 視聴者が動画終了後に他の動画を見続けるか</li>
+                        <li><strong>情報密度:</strong> 長さよりも内容の深さと満足度が重視される</li>
+                        <li><strong>リピート率:</strong> 継続的な関係構築がブラウジング推奨の鍵</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-stone-800 text-white p-8 rounded-2xl shadow-sm mb-8">
+                <h3 class="text-2xl font-bold text-rose-400 mb-4">3. LLMによる「動画読解」とAI検索資産化</h3>
+                <p class="text-stone-300 mb-4">AI（大規模言語モデル）は動画を「見て」いるのではなく、トランスクリプト（文字起こし）をテキストとして「読んで」います。映像だけで伝えるのではなく、ブランド名や差別化ポイントを明確に「言葉として発話する」ことが不可欠です。</p>
+                <div class="bg-stone-700 p-4 rounded-lg font-mono text-sm text-stone-200 border-l-4 border-rose-500">
+                    "AIにとって、発話されていない情報は存在しない。" <br>
+                    → 自然言語最適化（NLO）が動画台本（スクリプト）設計の必須要件。
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-strategy" class="fade-in hidden">
+            <header class="mb-10 border-b border-stone-200 pb-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">AIO/GEO戦略とShare of Voice</h2>
+                <p class="text-lg text-stone-600">このセクションでは、AIに「選ばれるブランド」になるための具体的な戦略構造と、その成果を示す実例（Rootly社）を紹介します。Share of Voice (SoV) という新しい最重要KPIの概念を把握し、競争的置換をいかに起こすかを学びます。</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 border-t-4 border-t-rose-500">
+                    <div class="text-4xl mb-4">🏛️</div>
+                    <h3 class="text-lg font-bold text-stone-800 mb-2">1. 構造的権威性</h3>
+                    <p class="text-sm text-stone-600">AIは自己PRを排除し、客観的な裏付けを好みます。「導入社数」「満足度」等の定量的データや、実名による第三者評価、そしてAIが引用しやすい一問一答（FAQ）形式のコンテンツを拡充します。</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 border-t-4 border-t-sky-500">
+                    <div class="text-4xl mb-4">🛡️</div>
+                    <h3 class="text-lg font-bold text-stone-800 mb-2">2. 情報のデリバリー</h3>
+                    <p class="text-sm text-stone-600">静的な公開から能動的な供給へ。Schema.org（構造化データ）を実装し、AIに「ここはレビュー」「ここはFAQ」と正しく認識させる技術的ガードレールを構築。ハルシネーション（嘘）を防ぎます。</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 border-t-4 border-t-amber-500">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-lg font-bold text-stone-800 mb-2">3. SoVの掌握</h3>
+                    <p class="text-sm text-stone-600">Share of Voice（AI回答内での占有率）が最重要KPI。AIの回答には「2ページ目」がないため、SoVの向上は競合からのシェア奪取（競争的置換）に直結します。</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-100">
+                <h3 class="text-2xl font-bold text-stone-900 mb-6">成功事例：Rootly社のAI引用率10倍成長</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-stone-700 mb-4">インシデント管理ツールのRootly社は、SEOで成果を上げながらもAI検索経由の流入が計測不能な「ダークファネル」に埋もれていました。</p>
+                        <p class="text-stone-700 mb-4">AthenaHQを導入し、AIが公式サイトの自己PRよりも<strong>「第三者レビュー」</strong>や<strong>「製品ドキュメント」</strong>を優先参照していることを突き止め、これらのコンテンツを最適化しました。</p>
+                        <div class="bg-rose-50 text-rose-800 p-4 rounded-lg font-bold">
+                            結果：わずか数ヶ月でブランド引用率が10倍に急増。AI回答シェアも45%増加。
+                        </div>
+                    </div>
+                    <div>
+                        <div class="chart-container">
+                            <canvas id="rootlyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-roadmap" class="fade-in hidden">
+            <header class="mb-10 border-b border-stone-200 pb-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">2026年 実行ロードマップ</h2>
+                <p class="text-lg text-stone-600">このセクションでは、これまでの概念と戦略を具体的なアクションプランに落とし込みます。AI共同編集モデルの構築やABテストの実装を含む、組織として直ちに着手すべきステップをインタラクティブなチェックリストで確認します。</p>
+            </header>
+
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-stone-200 mb-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-stone-800">進捗状況</h3>
+                    <span id="progress-text" class="text-rose-600 font-bold text-xl">0%</span>
+                </div>
+                <div class="w-full bg-stone-100 rounded-full h-4 mb-8 overflow-hidden border border-stone-200">
+                    <div id="progress-bar" class="bg-gradient-to-r from-rose-400 to-rose-600 h-4 rounded-full transition-all duration-500 w-0"></div>
+                </div>
+
+                <div class="space-y-8">
+                    
+                    <div>
+                        <h4 class="flex items-center gap-2 text-lg font-bold text-stone-800 border-b-2 border-stone-100 pb-2 mb-4">
+                            <span class="bg-stone-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">1</span> 
+                            フェーズ1：基盤構築（1ヶ月目）
+                        </h4>
+                        <div class="space-y-3">
+                            <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-stone-50 cursor-pointer border border-transparent hover:border-stone-200 transition-colors">
+                                <input type="checkbox" class="task-check mt-1 w-5 h-5 text-rose-600 rounded border-stone-300 focus:ring-rose-500">
+                                <div>
+                                    <p class="font-bold text-stone-800">自社のAI上の評価とSoVの現状診断</p>
+                                    <p class="text-sm text-stone-500">AthenaHQ等のツールを用い、主要クエリにおける推奨シェアを可視化する。</p>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-stone-50 cursor-pointer border border-transparent hover:border-stone-200 transition-colors">
+                                <input type="checkbox" class="task-check mt-1 w-5 h-5 text-rose-600 rounded border-stone-300 focus:ring-rose-500">
+                                <div>
+                                    <p class="font-bold text-stone-800">競合の「外れ値（アウトライアー）」分析</p>
+                                    <p class="text-sm text-stone-500">競合平均の3〜10倍伸びている動画を特定し、アルゴリズムの好みをリバースエンジニアリングする。</p>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-stone-50 cursor-pointer border border-transparent hover:border-stone-200 transition-colors">
+                                <input type="checkbox" class="task-check mt-1 w-5 h-5 text-rose-600 rounded border-stone-300 focus:ring-rose-500">
+                                <div>
+                                    <p class="font-bold text-stone-800">構造化データ（Schema.org）の全コンテンツ実装</p>
+                                    <p class="text-sm text-stone-500">FAQやReviewスキーマを導入し、ハルシネーション（幻覚）リスクを抑制する。</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="flex items-center gap-2 text-lg font-bold text-stone-800 border-b-2 border-stone-100 pb-2 mb-4">
+                            <span class="bg-stone-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">2</span> 
+                            フェーズ2：成長加速（3ヶ月目）
+                        </h4>
+                        <div class="space-y-3">
+                            <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-stone-50 cursor-pointer border border-transparent hover:border-stone-200 transition-colors">
+                                <input type="checkbox" class="task-check mt-1 w-5 h-5 text-rose-600 rounded border-stone-300 focus:ring-rose-500">
+                                <div>
+                                    <p class="font-bold text-stone-800">AI共同編集モデルの構築（素材はAI、仕上げは人間）</p>
+                                    <p class="text-sm text-stone-500">Veo 3での動画生成やAIリップシンクを活用しつつ、人間の力で「0.5秒のフック」と品質を担保する。</p>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-stone-50 cursor-pointer border border-transparent hover:border-stone-200 transition-colors">
+                                <input type="checkbox" class="task-check mt-1 w-5 h-5 text-rose-600 rounded border-stone-300 focus:ring-rose-500">
+                                <div>
+                                    <p class="font-bold text-stone-800">9パターンABテストの定例化</p>
+                                    <p class="text-sm text-stone-500">サムネイル3種×タイトル3種で変数を1つに絞り、CTRと満足度を極大化する。</p>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-stone-50 cursor-pointer border border-transparent hover:border-stone-200 transition-colors">
+                                <input type="checkbox" class="task-check mt-1 w-5 h-5 text-rose-600 rounded border-stone-300 focus:ring-rose-500">
+                                <div>
+                                    <p class="font-bold text-stone-800">台本の自然言語最適化（NLO）</p>
+                                    <p class="text-sm text-stone-500">AIに引用させるため、ブランド名や差別化ポイントを明確に「発話」するスクリプトを設計する。</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="flex items-center gap-2 text-lg font-bold text-stone-800 border-b-2 border-stone-100 pb-2 mb-4">
+                            <span class="bg-stone-800 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">3</span> 
+                            フェーズ3：市場独占（6ヶ月目）
+                        </h4>
+                        <div class="space-y-3">
+                            <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-stone-50 cursor-pointer border border-transparent hover:border-stone-200 transition-colors">
+                                <input type="checkbox" class="task-check mt-1 w-5 h-5 text-rose-600 rounded border-stone-300 focus:ring-rose-500">
+                                <div>
+                                    <p class="font-bold text-stone-800">ダークファネルの可視化と継続的改善</p>
+                                    <p class="text-sm text-stone-500">営業のwin/loss分析からAIの機会損失を特定し、AIが優先参照するソースを強化する。</p>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 rounded-lg hover:bg-stone-50 cursor-pointer border border-transparent hover:border-stone-200 transition-colors">
+                                <input type="checkbox" class="task-check mt-1 w-5 h-5 text-rose-600 rounded border-stone-300 focus:ring-rose-500">
+                                <div>
+                                    <p class="font-bold text-stone-800">クリエイター連携の「SEO資産化」</p>
+                                    <p class="text-sm text-stone-500">インフルエンサー施策を認知だけでなく、AIが信頼する「第三者レビュー」としてスクリプトレベルで統合する。</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-stone-800 to-stone-900 text-white p-8 rounded-2xl shadow-lg text-center">
+                <h3 class="text-2xl font-bold mb-4">AI検索時代をリードする</h3>
+                <p class="text-stone-300 mb-6 max-w-2xl mx-auto">AIという新しいコンシェルジュに選ばれる仕組みを整えた組織のみが、次世代の市場シェアを独占します。戦略的ロードマップを推進し、ブランドの不可視化リスクを最大の成長機会へと転換しましょう。</p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+let chartsInitialized = false;
+
+function navigate(sectionId) {
+    const sections = ['paradigm', 'algorithm', 'strategy', 'roadmap'];
+    
+    sections.forEach(sec => {
+        document.getElementById(`sec-${sec}`).classList.add('hidden');
+        document.getElementById(`sec-${sec}`).classList.remove('block');
+        document.getElementById(`btn-${sec}`).classList.remove('active', 'bg-rose-50', 'text-rose-600', 'font-bold', 'border-r-4', 'border-rose-600');
+    });
+
+    document.getElementById(`sec-${sectionId}`).classList.remove('hidden');
+    document.getElementById(`sec-${sectionId}`).classList.add('block');
+    
+    const activeBtn = document.getElementById(`btn-${sectionId}`);
+    activeBtn.classList.add('active');
+    activeBtn.style.backgroundColor = '#fce7f3';
+    activeBtn.style.color = '#e11d48';
+    activeBtn.style.fontWeight = '600';
+    activeBtn.style.borderRight = '4px solid #e11d48';
+
+    if (!chartsInitialized && (sectionId === 'paradigm' || sectionId === 'strategy')) {
+        initCharts();
+        chartsInitialized = true;
+    }
+}
+
+function toggleAlgo(type) {
+    const btnShorts = document.getElementById('btn-shorts');
+    const btnLong = document.getElementById('btn-long');
+    const contentShorts = document.getElementById('content-shorts');
+    const contentLong = document.getElementById('content-long');
+
+    if (type === 'shorts') {
+        btnShorts.className = 'px-6 py-2 rounded-full bg-sky-600 text-white font-bold transition-all focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2';
+        btnLong.className = 'px-6 py-2 rounded-full bg-stone-200 text-stone-600 font-bold transition-all hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2';
+        contentShorts.classList.remove('hidden');
+        contentLong.classList.add('hidden');
+    } else {
+        btnLong.className = 'px-6 py-2 rounded-full bg-sky-600 text-white font-bold transition-all focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2';
+        btnShorts.className = 'px-6 py-2 rounded-full bg-stone-200 text-stone-600 font-bold transition-all hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2';
+        contentLong.classList.remove('hidden');
+        contentShorts.classList.add('hidden');
+    }
+}
+
+function initCharts() {
+    const influenceCtx = document.getElementById('influenceChart');
+    if (influenceCtx) {
+        new Chart(influenceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['AIに影響される (74%)', 'その他 (26%)'],
+                datasets: [{
+                    data: [74, 26],
+                    backgroundColor: ['#e11d48', '#e5e7eb'],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '75%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { family: 'sans-serif' }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    const rootlyCtx = document.getElementById('rootlyChart');
+    if (rootlyCtx) {
+        new Chart(rootlyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['導入前 (SEO中心)', '導入後 (AIO/GEO最適化)'],
+                datasets: [{
+                    label: 'ブランド引用率 (SoV %)',
+                    data: [3, 30],
+                    backgroundColor: ['#d6d3d1', '#0ea5e9'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 40,
+                        ticks: {
+                            callback: function(value) { return value + "%" }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.raw + "%";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+}
+
+document.querySelectorAll('.task-check').forEach(checkbox => {
+    checkbox.addEventListener('change', updateProgress);
+});
+
+function updateProgress() {
+    const checkboxes = document.querySelectorAll('.task-check');
+    const total = checkboxes.length;
+    const checked = document.querySelectorAll('.task-check:checked').length;
+    const percentage = Math.round((checked / total) * 100);
+    
+    document.getElementById('progress-bar').style.width = percentage + '%';
+    document.getElementById('progress-text').innerText = percentage + '%';
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    initCharts();
+    chartsInitialized = true;
+});
+</script>
+</body>
+</html>
